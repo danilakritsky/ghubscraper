@@ -22,7 +22,7 @@ A small dockerized service that scrapes GitHub account pages, collecting info ab
 
 6. ***postgres*** - an instance of PostgreSQL database used to store items scraped by *scraper_api_spider* through the ***api*** service.
 
-Items saved ***mongo*** and ***postgres*** to these databases persist across container sessions by using mapped volumes inside the project's directory.
+Items saved to the ***mongo*** and ***postgres*** databases persist across container sessions by using mapped volumes inside the project's directory.
 
 
 
@@ -126,7 +126,7 @@ To scrape accounts *without logging* into the `scraper` container use:
 >`docker exec scraper  sh -c 'scrapy crawl scraper -a start_urls=https://github.com/danilakritsky,https://github.com/scrapy'`
 >
 
-### Examine stored data
+### Examining stored data
 To examine the data stored in *MongoDB* login into the **mongo** container's shell by running:
 > `docker exec -it mongo sh`  
 >
@@ -148,8 +148,8 @@ In container run the following command to open postgres shell:
 > `psql -U postgres`
 >
 When in postgres shell run the following commands to view stored items:
-> `\c githubscraper`  
->  `SELECT * FROM githubscraper_repo;`
+> `\c ghubscraper`  
+>  `SELECT * FROM ghubscraper_repo;`
 
 ### Stopping services
 To stop all containers run:
